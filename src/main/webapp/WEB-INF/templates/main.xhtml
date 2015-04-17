@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+  <h:head>
+    <title>Сервер статистики</title>
+    <link href="#{request.contextPath}/css/main.css" rel="stylesheet" type="text/css" />
+  </h:head>
+  <h:body>
+    <script src="#{request.contextPath}/js/script.js"></script>
+    <div id="top-panel">
+      <h1>Сервер статистики</h1>
+      <h3>ГОУ СПО Прокопьевский горнотехнический техникум им. В.П. Романова</h3>
+    </div>
+    <div id="top-menu">
+      <h:form>
+        <p>
+          <h:outputText value="Требуемый отчет " />
+          <h:selectOneMenu value="#{sessionMB.pageCode}">
+            <f:selectItem itemLabel="выберите отчет" itemValue="0" />
+            <f:selectItems value="#{sessionMB.reports}" />
+            <f:ajax execute="@this" render="@form" />
+          </h:selectOneMenu>
+        </p>
+        <c:if test="#{sessionMB.reportSelected}">
+          <ui:include id="subMenu" src="#{sessionMB.link}" />
+          <p><h:commandButton value="Отобразить" action="#{sessionMB.processRequest()}" /></p>
+        </c:if>
+      </h:form>
+    </div>
+    <div id="container">
+      <div id="messages">
+        <h:messages id="otherMessages"  class="errorMessage" />
+        <h:messages id="globalMessages" globalOnly="true" class="errorMessage" />
+      </div>
+      <div id="content">
+        <ui:insert name="content" />
+      </div>
+      <div id="footer">
+        <hr/>
+        &#169; 2014 ГОУ СПО Прокопьевский горнотехнический техникум им. В.П.Романова.
+        <!-- bottom menu, etc -->
+      </div>
+    </div>
+  </h:body>
+</html>

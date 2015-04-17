@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Количество поданных заявлений</title>
+  </h:head>
+  <h:body>
+    <ui:composition template="/WEB-INF/templates/main.xhtml">
+      <ui:define name="content">
+        <h2>Количество поданных заявлений</h2>
+        <table align="center" width="100%" border="0">
+          <tr>
+            <th rowspan="2" width="70%">
+              Код и наименование специальности
+            </th>
+            <th colspan="2" width="10%">
+              План приема
+            </th>
+            <th colspan="2" width="10%">
+              Подано заявлений
+            </th>
+            <th colspan="2" width="10%">
+              Конкурс
+            </th>
+          </tr>
+          <tr>
+            <th width="50">
+              Бюджет
+            </th>
+            <th width="50">
+              Контракт
+            </th>
+            <th width="50">
+              Бюджет
+            </th>
+            <th width="50">
+              Контракт
+            </th>
+            <th width="50">
+              Бюджет
+            </th>
+            <th width="50">
+              Контракт
+            </th>
+          </tr>
+          <ui:repeat var="item" value="#{sessionMB.getInputList()}">
+            <tr class="#{item.getRowClass()}">
+              <td>
+                <h:outputText value="#{item.getSpecName()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getBudgetPlan()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getContractPlan()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getBudgetCount()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getContractCount()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getBudgetConcourse()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getContractConcourse()}"/>
+              </td>
+            </tr>
+          </ui:repeat>
+        </table>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

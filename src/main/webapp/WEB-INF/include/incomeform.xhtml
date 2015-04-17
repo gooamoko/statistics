@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+  <p>
+    <h:outputText value="Форма обучения " />
+    <h:selectOneMenu value="#{sessionMB.extramural}">
+      <f:selectItem itemLabel="очная" itemValue="false" />
+      <f:selectItem itemLabel="заочная" itemValue="true" />
+    </h:selectOneMenu>
+    <h:outputText value=" Финансирование " />
+    <h:selectOneMenu value="#{sessionMB.commercial}">
+      <f:selectItem itemLabel="бюджет" itemValue="false" />
+      <f:selectItem itemLabel="контракт" itemValue="true" />
+    </h:selectOneMenu>
+  </p>
+</html>

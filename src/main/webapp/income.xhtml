@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+  <h:head>
+    <title>Списки зачисленных</title>
+  </h:head>
+  <h:body>
+    <ui:composition template="/WEB-INF/templates/main.xhtml">
+      <ui:define name="content">
+        <h2>Списки зачисленных</h2>
+        <table align="center" width="100%" border="0">
+          <tr>
+            <th width="60%">
+              Фамилия Имя Отчество
+            </th>
+            <th width="20%">
+              Общий балл
+            </th>
+            <th width="20%">
+              Зачислен в группу
+            </th>
+          </tr>
+          <ui:repeat var="item" value="#{sessionMB.getPassedList()}">
+            <tr class="#{item.getRowClass()}">
+              <td>
+                <h:outputText value="#{item.getStudentName()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getGroupBall()}"/>
+              </td>
+              <td>
+                <h:outputText value="#{item.getGroupName()}"/>
+              </td>
+            </tr>
+          </ui:repeat>
+        </table>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>
