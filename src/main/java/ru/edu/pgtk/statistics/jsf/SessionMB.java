@@ -298,7 +298,7 @@ public class SessionMB {
         return "/" + forms[pageCode - 1] + "?faces-redirect=true";
       }
     } catch (Exception e) {
-      return "/error";
+      return "/error?faces-redirect=true";
     }
   }
 
