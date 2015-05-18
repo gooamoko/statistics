@@ -59,7 +59,6 @@ public class Student {
       return ListMarks(rs);
     } else {
       List<Mark> lst = new ArrayList<>();
-      lst.add(new Mark("Невозможно соединиться с базой данных", 0, 0));
       return lst;
     }
   }
@@ -79,7 +78,6 @@ public class Student {
       return ListMarks(rs);
     } else {
       List<Mark> lst = new ArrayList<>();
-      lst.add(new Mark("Невозможно соединиться с базой данных", 0, 0));
       return lst;
     }
   }
