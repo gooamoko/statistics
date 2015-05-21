@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
+  
+  private final static DecimalFormat df = new DecimalFormat("#.##");
 
   private String studentCode = "";
   private String studentNumber = "";
@@ -29,9 +31,7 @@ public class Student {
   }
   
   public String getMarkStr() {
-    DecimalFormat decimalStr = new DecimalFormat("#.##");
-    return decimalStr.format(averageMark);
-    
+    return df.format(averageMark);    
   }
 
   private List<Mark> ListMarks(ResultSet rs) throws SQLException {
