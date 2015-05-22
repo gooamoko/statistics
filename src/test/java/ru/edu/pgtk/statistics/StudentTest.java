@@ -1,5 +1,9 @@
 package ru.edu.pgtk.statistics;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -32,12 +36,18 @@ public class StudentTest {
       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
       String url = "jdbc:sqlserver://192.168.0.251:1433";
       Properties props = new Properties();
-      props.setProperty("databaseName", "PGTKBase");
-      props.setProperty("user", "department");
-      props.setProperty("password", "pass2dep");
+      File file = new File("jdbctest.properties");
+      if (file.canRead()) {
+        FileInputStream input = new FileInputStream(file);
+        props.load(input);
+      } else {
+        System.out.println("Can't read file " + file.getName());
+      }
       connection = DriverManager.getConnection(url, props);
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (ClassNotFoundException | SQLException | FileNotFoundException e) {
       System.out.println("Exception with message " + e.getMessage());
+    } catch (IOException e) {
+      System.out.println("IOException with message " + e.getMessage());
     }
   }
 
@@ -165,5 +175,5 @@ public class StudentTest {
     } catch (SQLException e) {
       fail("Exception class " + e.getClass().getName() + " with message " + e.getMessage());
     }
-  }  
+  }
 }

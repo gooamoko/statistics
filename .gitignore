@@ -1,3 +1,4 @@
 nb-configuration.xml
+jdbctest.properties
 /target/
 /glassfish/
