@@ -70,7 +70,7 @@ public class SessionMB {
     }
     monthList = new ArrayList<>(12);
     for (int x = 0; x < 12; x++) {
-      monthList.add(new SelectItem(x, getMonthName(x)));
+      monthList.add(new SelectItem(x + 1, getMonthName(x)));
     }
     yearList = new ArrayList<>(2);
     GregorianCalendar calendar = new GregorianCalendar();
